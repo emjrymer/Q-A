@@ -8,6 +8,13 @@ class UserProfile(models.Model):
     score = models.IntegerField(default=0)
 
 
+# method for creating profile
+@receiver(post_save, sender='auth.User')
+def create_profife(sender, **kwargs):
+    user_instance = kwargs.get('instance')
+    if kwargs.get('created'):
+       UserProfile.objects.create(user=user_instance)
+
 class Tag(models.Model):
     tag = models.CharField(max_length=30)
 
@@ -21,10 +28,17 @@ class Question(models.Model):
     tag = models.ManyToManyField(Tag)
     user = models.ForeignKey('auth.User')
     time_created = models.DateTimeField(auto_now_add=True)
-    value = models.IntegerField(default=0)
+    value = models.IntegerField(default=5)
 
     class Meta:
         ordering = ['-time_created']
+
+# method for updating user score
+@receiver(post_save, sender=Question)
+def udpate_user_score(sender, instance, **kwargs):
+    instance.user.profile.score += instance.value
+    print(instance.user.profile.score)
+    instance.user.profile.save()
 
 
 class Answer(models.Model):
@@ -33,11 +47,3 @@ class Answer(models.Model):
     related_question = models.ForeignKey(Question)
     user = models.ForeignKey('auth.User')
     score = models.IntegerField(default=0)
-
-
-# method for updating
-@receiver(post_save, sender='auth.User')
-def create_profife(sender, instance, **kwargs):
-    user_instance = kwargs.get('instance')
-    if kwargs.get('created'):
-       UserProfile.objects.create(user=user_instance)

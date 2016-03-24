@@ -9,9 +9,14 @@
         <ul>
         <li><a href="{% url 'signup_view' %}">signup</a></li>
         <li><a href="{% url 'login_view' %}">login</a></li>
+        {% if request.user.is_authenticated %}
         <li><a href="{% url 'logout_view' %}">{{request.User}}, logout</a></li>
+        {% endif %}
         </ul>
         <div class="container">
+            {% if request.user.is_authenticated %}
+            <h2>hello {{request.user.username}}</h2>
+            {% endif %}
             {% block content %}
             {% endblock %}
         </div>
