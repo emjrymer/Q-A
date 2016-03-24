@@ -54,6 +54,9 @@ class Vote(models.Model):
     user = models.ForeignKey('UserProfile')
     vote_choice = models.CharField(max_length=12, choices=VOTE_OPTION_CHOICES, null=True)
 
+    class Meta:
+        unique_together = (('user', 'vote_choice'),)
+
 
 class Answer(models.Model):
     body = models.TextField()
