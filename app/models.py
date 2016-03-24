@@ -53,7 +53,7 @@ class Vote(models.Model):
     answer = models.ForeignKey('app.Answer')
     user = models.ForeignKey('UserProfile')
     vote_choice = models.CharField(max_length=12, choices=VOTE_OPTION_CHOICES, null=True)
-
+    
     class Meta:
         unique_together = (('user', 'vote_choice'),)
 
