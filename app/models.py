@@ -1,8 +1,11 @@
 from django.db import models
+from django.db.models.signals import post_save
+from django.dispatch import receiver
 
 
 class UserProfile(models.Model):
     user = models.OneToOneField('auth.User', related_name='profile')
+    score = models.IntegerField(default=0)
 
 
 class Tag(models.Model):
@@ -30,3 +33,11 @@ class Answer(models.Model):
     related_question = models.ForeignKey(Question)
     user = models.ForeignKey('auth.User')
     score = models.IntegerField(default=0)
+
+
+# method for updating
+@receiver(post_save, sender='auth.User')
+def create_profife(sender, instance, **kwargs):
+    user_instance = kwargs.get('instance')
+    if kwargs.get('created'):
+       UserProfile.objects.create(user=user_instance)
