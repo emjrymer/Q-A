@@ -23,6 +23,7 @@ a {
 
 .submit{
     background-color: #281117;
+    color: white;
 }
 
 a:hover{
@@ -77,4 +78,9 @@ body{
 
  .postquestion{
      margin-left: 43px;
+ }
+
+ .panel{
+     padding-top: 20px;
+     color: #281117;
  }
