@@ -1,0 +1,80 @@
+.nav {
+    opacity:1;
+}
+.nav a:hover {
+    background-color: gray;
+}
+
+.apipost {
+    font-weight: bold;
+}
+
+#id_password{
+    color: #281117;
+}
+
+#id_username{
+    color: #281117;
+}
+
+a {
+    color: white;
+}
+
+.submit{
+    background-color: #281117;
+}
+
+a:hover{
+    color: black;
+    letter-spacing: 1.5px;
+    background-color: gray;
+}
+
+h4{
+    background-image: url(http://www.freevectors.net/files/large/BlueMagicBackground.jpg);
+    width: auto;
+    color: white;
+    height: 50px;
+    text-align: center;
+    padding-top: 15px;
+}
+h5{
+    background-color: gray;
+    opacity:1;
+    width: auto;
+    color: white;
+    height: auto;
+    padding-bottom: 10px;
+    padding-top: 15px;
+    letter-spacing: 2.5px;
+    text-align: center;
+}
+
+
+body{
+    background-image: url(http://i764.photobucket.com/albums/xx286/lightsatnight/harry-potter-14.jpg);
+    background-size:cover;
+    color: white;
+}
+
+.container{
+    background-image: url(https://s-media-cache-ak0.pinimg.com/236x/cd/01/11/cd011179295b00de88357fc6b90d0631.jpg);
+    opacity:0.7;
+    height: 800px;
+    padding-left: 40px;
+    padding-right: 60px;
+    padding-top: 15px;
+    width: 800px;
+}
+ ul {
+     list-style: none;
+ }
+
+ li{
+     list-style: none;
+ }
+
+ .postquestion{
+     margin-left: 43px;
+ }

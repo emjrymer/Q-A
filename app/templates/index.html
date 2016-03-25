@@ -1,19 +1,26 @@
 {% extends 'base.html' %}
-
+{% block title %} Welcome Wizard {% endblock %}
 {% block content %}
-<h1>homepage</h1>
+<h1>welcome wizard {{request.user}}</h1>
 {% if request.user.is_authenticated %}
-<a href="{% url 'post_question' %}">Post Question with API</a>
+<a href="{% url 'post_question' %}" class="apipost">Post Question with API</a>
 <ul>
 {% for question in questions %}
-    <li>{{ question }}</li>
+    <li><h4><strong>{{ question }}:</strong> {{ question.body }}</h4>
         <ul>
             {% for answer in question.answer_set.all %}
-                <li>{{ answer}}</li>
+                <li><h5>{{ answer }}</h5></li>
+
             {% endfor %}
+<br>
+            <li><a href="{% url 'post_answer' %}"class="apipost">Answer with API</a></li>
         </ul>
+    </li>
 {% endfor %}
 </ul>
 {% endif %}
+<br>
+<h3>Login or Signup to check out the World of Harry Potter</h3>
+
 
 {% endblock %}

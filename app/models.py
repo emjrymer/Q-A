@@ -33,7 +33,6 @@ class Question(models.Model):
     user = models.ForeignKey('auth.User')
     time_created = models.DateTimeField(auto_now_add=True)
     value = models.IntegerField(default=5)
-    answers = models.ManyToManyField('app.Answer')
 
     def __str__(self):
         return self.title
@@ -56,7 +55,7 @@ class Vote(models.Model):
     vote_choice = models.CharField(max_length=12, choices=VOTE_OPTION_CHOICES, null=True)
 
     class Meta:
-        unique_together = (('user', 'vote_choice'),)
+        unique_together = (('user', 'answer'),)
 
 
 class Answer(models.Model):

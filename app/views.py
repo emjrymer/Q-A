@@ -22,7 +22,6 @@ class IndexView(TemplateView):
     def get_context_data(self, **kwargs):
         context = super(IndexView, self).get_context_data(**kwargs)
         context['questions'] = Question.objects.all()
-        context['answers'] = Answer.objects.filter(related_question=question)
         return context
 
 class QuestionListCreateAPIView(generics.ListCreateAPIView):

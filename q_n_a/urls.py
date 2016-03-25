@@ -11,6 +11,6 @@ urlpatterns = [
     url(r'^logout/$', auth_views.logout_then_login, name="logout_view"),
     url(r'^api/questions/$', QuestionListCreateAPIView.as_view(), name="post_question"),
     url(r'^api/questions/(?P<pk>\d+)/$', QuestionRetrieveUpdateDestroyAPIView.as_view()),
-    url(r'^api/answers/$', AnswerListCreateAPIView.as_view()),
-    url(r'^api/answers/(?P<pk>\d+)/$', AnswerRetrieveUpdateDestroyAPIView.as_view()),
+    url(r'^api/answers/$', AnswerListCreateAPIView.as_view(), name='post_answer'),
+    url(r'^api/answers/(?P<pk>\d+)/$', AnswerRetrieveUpdateDestroyAPIView.as_view(), name='edit_answer'),
 ]
