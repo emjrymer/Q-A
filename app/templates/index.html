@@ -5,12 +5,14 @@
 <br>
 {% if request.user.is_authenticated %}
 <a href="{% url 'post_question' %}" class="apipost">Post Question with API</a>
+<h2>Top five posts:</h2>
+<h2><a href="{% url 'question_create_view' %}">ask a question</a></h2>
 <ul>
 {% for question in questions %}
-    <li><h4><strong>{{ question }}:</strong> {{ question.body }}</h4>
+    <li><h4><a href="#" class="questiontitle"><strong>{{ question }}:</strong> {{ question.body }}</a></h4>
         <ul>
             {% for answer in question.answer_set.all %}
-                <li><h5>{{ answer }}</h5></li>
+                <li><h5><a href="#"></a>{{ answer }}</h5></li>
 
             {% endfor %}
             <li><a href="{% url 'post_answer' %}"class="apipost">Answer with API</a></li>

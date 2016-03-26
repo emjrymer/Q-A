@@ -12,6 +12,9 @@
         <div class="container">
             <ul class="nav nav-pills">
                 {% if request.user.is_authenticated %}
+                <li><a href="{% url 'index_view' %}">Home</a></li>
+                <li><a href="{% url 'profile' request.user.id %}">account profile</a></li>
+                <li><a href="#">Your Score:  {{ request.user.profile.score }}</a></li>
                 <li><a href="{% url 'logout_view' %}">{{request.user}}, logout</a></li>
                 {% else %}
                 <li><a href="{% url 'signup_view' %}">signup</a></li>

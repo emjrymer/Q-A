@@ -1,12 +1,18 @@
+.apipost {
+    font-weight: bold;
+    background-color: #7B7377;
+    opacity:1;
+}
+
+.currentscore{
+    text-align: center;
+}
+
 .nav {
     opacity:1;
 }
 .nav a:hover {
     background-color: gray;
-}
-
-.apipost {
-    font-weight: bold;
 }
 
 #id_password{
@@ -30,6 +36,27 @@ a:hover{
     color: black;
     letter-spacing: 1.5px;
     background-color: gray;
+}
+
+.answerbody{
+    background-image: url(http://www.freevectors.net/files/large/BlueMagicBackground.jpg);
+}
+
+.answerbody:hover{
+    background-image: url(http://www.freevectors.net/files/large/BlueMagicBackground.jpg);
+    letter-spacing: normal;
+    color: white;
+}
+
+.questiontitle:hover {
+    background-image: url(http://www.freevectors.net/files/large/BlueMagicBackground.jpg);
+    width: 300px;
+    color: white;
+    height: 40px;
+    text-align: center;
+    padding-top: 5px;
+    letter-spacing: normal;
+
 }
 
 h4{

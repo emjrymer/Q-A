@@ -1,0 +1,13 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<table>
+<th>Title: {{ object.title }}</th>
+<tr><td>Body: {{ object.body }}</td></tr>
+<tr><th>Tags: </th>
+{% for tag in object.tags.all %}
+<th>{{ tag }}</th>
+{% endfor %}
+</tr>
+</table>
+{% endblock %}
