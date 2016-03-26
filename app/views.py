@@ -72,6 +72,20 @@ class QuestionCreateView(CreateView):
         question_instance.save()
         return super().form_valid(form)
 
+    def get_success_url(self):
+        return reverse('index_view')
+
+
+class AnswerCreateView(CreateView):
+    model = Answer
+    fields = ('body',)
+
+    def form_valid(self, form):
+        ans_instance = form.save(commit=False)
+        ans_instance.related_question = Question.objects.get(pk=self.kwargs.get('q_id'))
+        ans_instance.user = self.request.user
+        ans_instance.save()
+        return super().form_valid(form)
 
     def get_success_url(self):
         return reverse('index_view')

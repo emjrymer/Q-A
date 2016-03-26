@@ -2,12 +2,40 @@
 
 {% block content %}
 <table>
-<th>Title: {{ object.title }}</th>
-<tr><td>Body: {{ object.body }}</td></tr>
-<tr><th>Tags: </th>
-{% for tag in object.tags.all %}
-<th>{{ tag }}</th>
-{% endfor %}
+<tr>
+    <td>Title:</td>
+    <td>Body:</td>
+    <td>Tags:</td>
+
+</tr>
+<tr>
+    <td>{{ object.title }}</td>
+    <td>{{ object.body }}</td>
+    {% for tag in object.tag.all %}
+        <td>{{ tag }}</td>
+    {% endfor %}
 </tr>
 </table>
+
+<table>
+
+    <tr>
+        <td>Answer</td>
+        <td>Score</td>
+        <td>Vote</td>
+    </tr>
+    {% for answer in answers %}
+    <tr>
+        <td>{{ answer.body }}</td>
+        <td>{{ answer.score }}</td>
+        <td><a href="#">
+            <button class="button" type="submit" name="action">Upvote</button></a>
+            <a href="#">
+            <button class="button" type="submit" name="action">Downvote</button></a></td>
+    </tr>
+    {% endfor %}
+</table>
+<br><br>
+<a href="{% url 'answer_create_view' object.pk %}">
+<button class="burtton" type="submit" name="action">Answer Here!</button></a>
 {% endblock %}

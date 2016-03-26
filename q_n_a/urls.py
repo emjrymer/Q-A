@@ -1,6 +1,6 @@
 from django.conf.urls import url
 from django.contrib import admin
-from app.views import QuestionCreateView, MyProfileView, QuestionDetailView, IndexView, SignUpView, QuestionListCreateAPIView, QuestionRetrieveUpdateDestroyAPIView, AnswerListCreateAPIView, AnswerRetrieveUpdateDestroyAPIView
+from app.views import AnswerCreateView, QuestionCreateView, MyProfileView, QuestionDetailView, IndexView, SignUpView, QuestionListCreateAPIView, QuestionRetrieveUpdateDestroyAPIView, AnswerListCreateAPIView, AnswerRetrieveUpdateDestroyAPIView
 from django.contrib.auth import views as auth_views
 
 urlpatterns = [
@@ -16,4 +16,5 @@ urlpatterns = [
     url(r'^myprofile/(?P<pk>\d+)/$', MyProfileView.as_view(), name="profile"),
     url(r'^questiondetail/(?P<pk>\d+)/$', QuestionDetailView.as_view(), name='question_detail_view'),
     url(r'^questioncreate/$', QuestionCreateView.as_view(), name='question_create_view'),
+    url(r'^question/(?P<q_id>\d+)/answer/$', AnswerCreateView.as_view(), name='answer_create_view'),
 ]
