@@ -1,6 +1,6 @@
 from django.conf.urls import url
 from django.contrib import admin
-from app.views import up_vote, DownAnsView, AnswerCreateView, QuestionCreateView, MyProfileView, QuestionDetailView, IndexView, SignUpView, QuestionListCreateAPIView, QuestionRetrieveUpdateDestroyAPIView, AnswerListCreateAPIView, AnswerRetrieveUpdateDestroyAPIView
+from app.views import up_vote, down_vote, AnswerCreateView, QuestionCreateView, MyProfileView, QuestionDetailView, IndexView, SignUpView, QuestionListCreateAPIView, QuestionRetrieveUpdateDestroyAPIView, AnswerListCreateAPIView, AnswerRetrieveUpdateDestroyAPIView
 from django.contrib.auth import views as auth_views
 
 urlpatterns = [
@@ -18,5 +18,5 @@ urlpatterns = [
     url(r'^questioncreate/$', QuestionCreateView.as_view(), name='question_create_view'),
     url(r'^question/(?P<q_id>\d+)/answer/$', AnswerCreateView.as_view(), name='answer_create_view'),
     url(r'^upvote/(?P<a_id>\d+)/$', up_vote, name='up_ans_view'),
-    url(r'^downvote/(?P<a_id>\d+)$', DownAnsView.as_view(), name='down_ans_view'),
+    url(r'^downvote/(?P<a_id>\d+)$', down_vote, name='down_ans_view'),
 ]

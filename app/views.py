@@ -91,7 +91,7 @@ class AnswerCreateView(CreateView):
         return reverse('index_view')
 
 
-class DownAnsView(View):
+def down_vote(View):
     Vote.objects.create(answer=Question.objects.get('a_id'), user=request.user, vote_choice="downvote")
     print(Vote.objects.all())
     return HttpResponseRedirect('/')

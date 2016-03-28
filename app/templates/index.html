@@ -2,6 +2,7 @@
 {% block title %} Welcome Wizard {% endblock %}
 {% block content %}
 <h1>welcome wizard {{request.user}}</h1>
+<iframe width="560" height="315" src="https://www.youtube.com/embed/2VDB-orRMpA" frameborder="0" allowfullscreen></iframe>
 <br>
 {% if request.user.is_authenticated %}
 <a href="{% url 'post_question' %}" class="apipost">Post Question with API</a>
