@@ -60,7 +60,13 @@ class QuestionDetailView(DetailView):
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
         context['answers'] = Answer.objects.filter(related_question=self.kwargs.get('pk'))
+        context['ans_id_list'] = []
+        for answer in context['answers']:
+            if answer.user == 'auth.User':
+                context['ans_id_list'].append(answer.id)
+        print(context)
         return context
+
 
 class QuestionCreateView(CreateView):
     model = Question
@@ -91,12 +97,10 @@ class AnswerCreateView(CreateView):
         return reverse('index_view')
 
 
-def down_vote(View):
-    Vote.objects.create(answer=Question.objects.get('a_id'), user=request.user, vote_choice="downvote")
-    print(Vote.objects.all())
+def down_vote(request, **kwargs):
+    Vote.objects.create(answer=Answer.objects.get(id=kwargs['a_id']), user=request.user.profile, vote_choice="down")
     return HttpResponseRedirect('/')
 
-def up_vote(request, a_id):
-    Vote.objects.create(answer=Question.objects.get('a_id'), user=request.user, vote_choice="upvote")
-    print(Vote.objects.all())
+def up_vote(request, **kwargs):
+    Vote.objects.create(answer=Answer.objects.get(id=kwargs['a_id']), user=request.user.profile, vote_choice="up")
     return HttpResponseRedirect('/')

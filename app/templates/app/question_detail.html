@@ -1,5 +1,5 @@
 {% extends 'base.html' %}
-
+{% block title %} home of {{request.user}} {% endblock %}
 {% block content %}
 <table>
 <tr>
@@ -27,10 +27,12 @@
     <tr>
         <td>{{ answer.body }}</td>
         <td>{{ answer.score }}</td>
+        {% if answer.id not in ans_id_list %}
         <td>
-            <a href="{% url 'up_ans_view' {{ answer.id }} %}"><button class="button" type="submit" name="action">Upvote</button></a>
-            <a href="#"><button class="button" type="submit" name="action">Downvote</button></a>
+            <a href="{% url 'up_ans_view' answer.id %}"><button class="button" type="submit" name="action">Upvote</button></a>
+            <a href="{% url 'down_ans_view' answer.id %}"><button class="button" type="submit" name="action">Downvote</button></a>
         </td>
+        {% endif %}
     </tr>
     {% endfor %}
 </table>

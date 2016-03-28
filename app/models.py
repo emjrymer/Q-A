@@ -52,10 +52,10 @@ VOTE_OPTION_CHOICES = (("up", "upvote"), ("down", "downvote"))
 class Vote(models.Model):
     answer = models.ForeignKey('app.Answer')
     user = models.ForeignKey('UserProfile')
-    vote_choice = models.CharField(max_length=12, choices=VOTE_OPTION_CHOICES, null=True)
+    vote_choice = models.CharField(max_length=12, choices=VOTE_OPTION_CHOICES)
 
     class Meta:
-        unique_together = (('user', 'answer'),)
+        unique_together = (('user', 'vote_choice'),)
 
 
 class Answer(models.Model):
