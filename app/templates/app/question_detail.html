@@ -28,7 +28,7 @@
         <td>{{ answer.body }}</td>
         <td>{{ answer.score }}</td>
         <td>
-            <a href="{% url 'up_ans_view' answer.id %}" ><button class="button" type="submit" name="action">Upvote</button></a>
+            <a href="{% url 'up_ans_view' {{ answer.id }} %}"><button class="button" type="submit" name="action">Upvote</button></a>
             <a href="#"><button class="button" type="submit" name="action">Downvote</button></a>
         </td>
     </tr>
