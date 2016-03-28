@@ -18,7 +18,6 @@
 </table>
 
 <table>
-
     <tr>
         <td>Answer</td>
         <td>Score</td>
@@ -28,14 +27,14 @@
     <tr>
         <td>{{ answer.body }}</td>
         <td>{{ answer.score }}</td>
-        <td><a href="#">
-            <button class="button" type="submit" name="action">Upvote</button></a>
-            <a href="#">
-            <button class="button" type="submit" name="action">Downvote</button></a></td>
+        <td>
+            <a href="{% url 'up_ans_view' answer.id %}" ><button class="button" type="submit" name="action">Upvote</button></a>
+            <a href="#"><button class="button" type="submit" name="action">Downvote</button></a>
+        </td>
     </tr>
     {% endfor %}
 </table>
 <br><br>
 <a href="{% url 'answer_create_view' object.pk %}">
-<button class="burtton" type="submit" name="action">Answer Here!</button></a>
+<button class="button" type="submit" name="action">Add Answer</button></a>
 {% endblock %}

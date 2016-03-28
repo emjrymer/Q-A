@@ -1,10 +1,10 @@
 from django.contrib.auth.models import User
 from django.contrib.auth.forms import UserCreationForm
 from django.core.urlresolvers import reverse
-from django.views.generic import CreateView, TemplateView, DetailView
+from django.views.generic import CreateView, TemplateView, DetailView, View
 from django.http import HttpResponseRedirect
 from rest_framework import generics
-from app.models import Question, Answer, UserProfile
+from app.models import Question, Answer, UserProfile, Vote
 from app.serializers import QuestionSerializer, AnswerSerializer
 
 
@@ -89,3 +89,12 @@ class AnswerCreateView(CreateView):
 
     def get_success_url(self):
         return reverse('index_view')
+
+
+class DownAnsView(View):
+    pass
+
+def up_vote(request, a_id):
+    Vote.objects.create(answer=Question.objects.get('a_id'), user=request.user, vote_choice="upvote")
+    print(Vote.objects.all())
+    return HttpResponseRedirect('/')
