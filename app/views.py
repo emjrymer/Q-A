@@ -60,11 +60,14 @@ class QuestionDetailView(DetailView):
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
         context['answers'] = Answer.objects.filter(related_question=self.kwargs.get('pk'))
-        context['ans_id_list'] = []
+        context['answer_vote_list'] = []
+        ans_id_list = []
         for answer in context['answers']:
-            if answer.user == 'auth.User':
-                context['ans_id_list'].append(answer.id)
-        print(context)
+            ans_id_list.append(answer.id)
+        for ans_id in ans_id_list:
+            if Vote.objects.filter(answer=ans_id):
+                context['answer_vote_list'].append(ans_id)
+        print(context['answer_vote_list'])
         return context
 
 
