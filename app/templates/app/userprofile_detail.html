@@ -1,18 +1,18 @@
 {% extends 'base.html' %}
 
 {% block content %}
-<h1 class="currentscore">Your Current Score: {{ object.score }}</h1>
+<h1 class="currentscore">Your Current Score: {{ request.user.profile.score }}</h1>
 <br>
 <ul>
     <li><h3>Total questions asked: {{ user_questions.count }}</h3></li>
     <h5>Questions you have asked:<br><p>each questoin asked is worth 5 points</p></h5>
     {% for question in user_questions %}
-    <li><h4><a href="#" class="questiontitle"><strong>{{ question }}:</strong> {{ question.body }}</a></h4></li>
+    <li><h4><a href="{% url 'question_detail_view' question.id %}" class="questiontitle"><strong>{{ question }}:</strong> {{ question.body }}</a></h4></li>
     {% endfor %}
     <li><h3>Total answers contributed: {{ user_answers.count }}</h3></li>
     <h5>Answers you have posted:</h5>
     {% for answer in user_answers %}
-      <li><h5><a href="#">{{ answer.body }}</a></h5></li>
+      <li><h5><a href="{% url 'question_detail_view' answer.related_question.id %}">{{ answer.body }}</a></h5></li>
     {% endfor %}
 </ul>
 {% endblock %}

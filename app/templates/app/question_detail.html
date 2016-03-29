@@ -2,28 +2,17 @@
 {% block title %} details {{request.user}} {% endblock %}
 {% block content %}
 <br>
+<h4>Question:     <strong>{{ question }} - </strong> {{ question.body }} Tags: {% for tag in object.tag.all %}
+    <td>{{ tag }}</td>
+{% endfor %}</h4>
 
-<table class="table question">
-<tr>
-    <th width=25%>Question:</th>
-    <th width=60%>Body:</th>
-    <th width=15%>Tags:</th>
-
-</tr>
-<tr>
-    <td>{{ object.title }}</td>
-    <td>{{ object.body }}</td>
-    {% for tag in object.tag.all %}
-        <td>{{ tag }}</td>
-    {% endfor %}
-</tr>
 </table>
 <br>
 <table class="table answer">
     <tr>
         <th width=70%>Answer</th>
         <th width=15%>Score</th>
-        <th width=15%>Vote</th>
+        <th class='vote' width=15%>Vote</th>
     </tr>
     {% for answer in answers %}
     <tr>
@@ -31,8 +20,8 @@
         <td>{{ answer.score }}</td>
         <td>
             {% if answer.id not in answer_vote_list %}
-            <a href="{% url 'up_ans_view' answer.id %}"><button class="button" type="submit" name="action">Upvote</button></a>
-            <a href="{% url 'down_ans_view' answer.id %}"><button class="button" type="submit" name="action">Downvote</button></a>
+            <a href="{% url 'up_ans_view' answer.id %}"><button class="btn btn-default" type="submit" name="action">Upvote</button></a>
+            <a href="{% url 'down_ans_view' answer.id %}"><button class="btn btn-default" type="submit" name="action">Downvote</button></a>
             {% else %}
             Voted
             {% endif %}
@@ -43,5 +32,5 @@
 </table>
 <br><br>
 <a href="{% url 'answer_create_view' object.pk %}">
-<button class="button" type="submit" name="action">Add Answer</button></a>
+<button class="btn btn-default" type="submit" name="action">Add Answer</button></a>
 {% endblock %}
